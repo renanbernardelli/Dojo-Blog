@@ -9,6 +9,8 @@ const Home = () => {
     { title: 'Web dev top tips', body: 'lorem ipsum...', author: 'mario', id: 3 }
   ]);
 
+  const [userName, setUserName] = useState('Renan');
+
   const handleDelete = (id) => {
     const newBlogs = blogs.filter((blog) => blog.id !== id);
 
@@ -17,13 +19,15 @@ const Home = () => {
 
   useEffect(() => {
     console.log('use effect ran');
-  });
+    console.log(userName);
+  }, [userName]); //If no parameter "[]" it will be run once, at the beginning. In this case it will run every time "useName" changes.
 
   return ( 
 
     <div className="home">
      <BlogList blogs={ blogs } title={ "All blogs!" } handleDelete={ handleDelete }></BlogList>
-
+    <button onClick={() => setUserName('Carlos') }>Change the name</button>
+    <p>{userName}</p>
     </div>
   );
 }
