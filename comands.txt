@@ -1,3 +1,8 @@
 To use the Json file data as server
 
 * npx json-server --watch data/db.json --port 8000
+
+
+Install React Router Dom
+
+* npm i react-router-dom
