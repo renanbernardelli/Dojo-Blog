@@ -1,4 +1,4 @@
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams, Link } from "react-router-dom";
 import useFetch from "./useFetch";
 
 const BlogDetails = () => {
@@ -15,6 +15,10 @@ const BlogDetails = () => {
     })
   }
 
+  const editBlog = () => {
+    history.push(`/edit/${blog.id}`);
+  }
+
   return (
     <div className="blog-details">
       { isPending && <div>Loading...</div> }
@@ -24,7 +28,10 @@ const BlogDetails = () => {
           <h2>{ blog.title }</h2>
           <p>Written by { blog.author }</p>
           <div>{ blog.body }</div>
-          <button onClick={deleteBlog}>Delete</button>
+          <div style={{display: "flex", justifyContent: "space-between"}}>
+            <button onClick={deleteBlog}>Delete</button>
+            <button onClick={editBlog}>Edit</button>
+          </div>
         </article>
       )}
     </div>
